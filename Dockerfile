@@ -7,7 +7,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy site files from the data-meetup subdirectory
-COPY data-meetup/ /usr/share/nginx/html/
+COPY . /usr/share/nginx/html/
 
 EXPOSE 80
 
