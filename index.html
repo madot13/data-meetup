@@ -325,38 +325,33 @@
     /* Partners */
     .partners-section { text-align: center; padding: 80px 0; }
     .partners-section h2 { margin-bottom: 32px; }
-    .partners-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 60px 100px;
-      max-width: 900px;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      margin: auto;
+    .grid-2, .partners-grid {
+      display: flex;        
+      flex-wrap: wrap;       
+      justify-content: center; 
+      align-items: center;    
+      gap: 40px 80px;         
+      max-width: 1000px;
+      margin: 0 auto 60px;
     }
     .partners {
     text-align: center;
     padding: 80px 0;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 80px 120px;
-      max-width: 900px;
-      margin: 0 auto 60px auto;
-    }
-
     .partner {
+      flex: 1 1 300px;    
+      max-width: 400px;  
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
     }
 
     .partner img {
-      height: 90px;
-      object-fit: contain;
+      max-width: 100%;     
+      height: auto;        
+      max-height: 80px;    
     }
 
     .partner p {
@@ -518,7 +513,7 @@
         </article>
         <article class="speaker-card">
           <div class="speaker-avatar">
-            <img src = "assets/img/dilnaz.png" alt="Сулейменова Дильназ">
+            <img src = "assets/img/dilnaz.jpg" alt="Сулейменова Дильназ">
           </div>
           <h3>Сулейменова Дильназ</h3>
           <p class="role">Эксперт</p>
