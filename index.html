@@ -38,7 +38,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
@@ -62,7 +61,6 @@
     .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--teal); transform: scaleX(0); transition: transform 0.2s; transform-origin: left; }
     .nav-links a:hover::after { transform: scaleX(1); }
 
-    /* ── HERO ── */
     .hero {
       position: relative; min-height: 100vh;
       display: flex; flex-direction: column;
@@ -114,7 +112,6 @@
     .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); color: #fff; font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 700; padding: 16px 28px; border-radius: 12px; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); transition: all 0.22s ease; }
     .btn-ghost:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
 
-    /* ── MARQUEE ── */
     .marquee-strip { background: var(--teal); overflow: hidden; padding: 14px 0; white-space: nowrap; }
     .marquee-track { display: inline-flex; animation: marquee 28s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
@@ -122,14 +119,12 @@
     .marquee-dot { width: 5px; height: 5px; background: rgba(255,255,255,0.5); border-radius: 50%; flex-shrink: 0; }
     @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    /* ── SECTIONS ── */
     .section { padding: 100px 0; opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .section.visible { opacity: 1; transform: translateY(0); }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
     .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; display: block; }
     .section-title { font-family: 'Unbounded', sans-serif; font-size: clamp(28px,3.8vw,50px); font-weight: 800; color: #fff; line-height: 1.06; letter-spacing: -0.03em; margin-bottom: 56px; }
 
-    /* ── BENTO ── */
     .bento-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 280px 220px; gap: 10px; }
     .bento-card { background: var(--bg-card); border-radius: 20px; padding: 32px; border: 1px solid var(--border); transition: background 0.25s, border-color 0.25s, transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s; }
     .bento-card:hover { background: var(--bg-card-hover); border-color: var(--border-bright); transform: translateY(-4px) scale(1.01); box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
@@ -144,7 +139,6 @@
     .bento-card.featured .overlay p { color: rgba(255,255,255,0.85); }
     .bento-icon { margin-bottom: 16px; color: rgba(255,255,255,0.6); line-height: 1; }
 
-    /* ── TRACKS ── */
     .tracks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 64px; }
     .track-card { border-radius: 20px; padding: 40px; border: 1px solid; transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s, border-color 0.3s; }
     .track-card.data { background: linear-gradient(135deg, rgba(13,148,136,0.14) 0%, rgba(13,148,136,0.05) 100%); border-color: rgba(13,148,136,0.3); }
@@ -154,46 +148,61 @@
     .track-card.security:hover { border-color: rgba(59,130,246,0.55); }
     .track-icon { margin-bottom: 16px; }
     .track-title { font-family: 'Unbounded', sans-serif; font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 10px; }
-    .track-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+    .track-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px; }
 
-    /* ── SPEAKERS ── */
+    .track-leaders-list { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 20px; }
+    .tl-sublabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-top: 4px; }
+    .track-card.security .tl-sublabel { color: var(--blue); }
+    .track-leader-item { display: flex; align-items: center; gap: 12px; }
+    /* ── ИЗМЕНЕНИЕ 1: увеличен аватар track leader + поддержка фото ── */
+    .tl-avatar { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; background: rgba(13,148,136,0.25); border: 1px solid rgba(13,148,136,0.4); display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-size: 11px; font-weight: 700; color: #fff; overflow: hidden; }
+    .tl-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tl-avatar.sec { background: rgba(59,130,246,0.2); border-color: rgba(59,130,246,0.4); }
+    .tl-avatar.tba { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); color: var(--text-muted); }
+    .tl-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal); line-height: 1; margin-bottom: 3px; }
+    .track-card.security .tl-label { color: var(--blue); }
+    .tl-name { font-size: 13px; font-weight: 600; color: #fff; }
+    .tl-name.tba { color: var(--text-muted); font-style: italic; }
+
     .speaker-track-header { display: flex; align-items: center; gap: 14px; padding: 20px 0 18px; margin-top: 20px; border-bottom: 2px solid var(--teal); }
     .speaker-track-header.security { border-color: var(--blue); }
     .speaker-track-badge { font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 800; padding: 6px 16px; border-radius: 100px; background: var(--teal); color: #fff; }
     .speaker-track-badge.security { background: var(--blue); }
     .speaker-track-title { font-family: 'Unbounded', sans-serif; font-size: 17px; font-weight: 800; color: #fff; }
     .track-sublabel { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin: 28px 0 10px; }
-    .track-leaders { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 10px; }
-    .track-leader-bar { display: flex; align-items: center; gap: 14px; background: rgba(13,148,136,0.1); border: 1px solid rgba(13,148,136,0.25); border-radius: 14px; padding: 14px 20px; }
-    .track-leader-bar.security-bar { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.25); }
-    .track-leader-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, var(--teal-dark), var(--teal)); display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 700; color: #fff; }
-    .track-leader-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .track-leader-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); margin-bottom: 2px; }
-    .security-bar .track-leader-label { color: var(--blue); }
-    .track-leader-name { font-size: 14px; font-weight: 700; color: #fff; }
-    .track-leader-role { font-size: 12px; color: var(--text-muted); }
-    .speakers-list { display: flex; flex-direction: column; }
-    .speaker-row { display: grid; grid-template-columns: 270px 1fr; gap: 40px; align-items: start; padding: 28px 0; border-bottom: 1px solid var(--border); border-radius: 8px; opacity: 0; transform: translateX(-12px); transition: opacity 0.45s ease, transform 0.45s ease, background 0.2s; }
-    .speaker-row:last-child { border-bottom: none; }
-    .speaker-row.in { opacity: 1; transform: translateX(0); }
-    .speaker-row:hover { background: rgba(255,255,255,0.025); }
-    .speaker-info { display: flex; align-items: center; gap: 16px; }
-    .speaker-avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, var(--teal-dark), var(--teal)); display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 20px 0 8px;
+    }
+    .speaker-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 20px;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 12px;
+      transition: border-color 0.2s, background 0.2s, transform 0.25s;
+    }
+    .speaker-card:hover { border-color: var(--border-bright); background: var(--bg-card-hover); transform: translateY(-3px); }
+    .speaker-card.sec:hover { border-color: rgba(59,130,246,0.3); }
+    .speaker-card.tba-card { border-style: dashed; border-color: rgba(255,255,255,0.1); opacity: 0.7; }
+    .speaker-card.tba-card:hover { opacity: 1; border-color: rgba(59,130,246,0.25); }
+    .speaker-avatar { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, var(--teal-dark), var(--teal)); display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-size: 16px; font-weight: 700; color: #fff; }
     .speaker-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .speaker-name { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .speaker-avatar.tba-avatar { background: rgba(59,130,246,0.08); border: 2px dashed rgba(59,130,246,0.25); color: rgba(59,130,246,0.5); font-size: 13px; }
+    .speaker-name { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.3; }
+    .speaker-name.tba { color: var(--text-muted); font-style: italic; font-weight: 500; }
     .speaker-role { font-size: 12px; color: var(--text-muted); font-weight: 500; line-height: 1.4; }
-    .speaker-topic { padding-left: 28px; border-left: 1px solid rgba(255,255,255,0.09); }
-    .speaker-topic h4 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.3; }
-    .speaker-topic p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+    .tba-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); color: rgba(59,130,246,0.7); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; }
 
-    /* ── SCHEDULE TABS ── */
     .schedule-tabs {
       display: flex;
       gap: 0;
       margin-bottom: 0;
       border-bottom: 2px solid var(--border);
     }
-
     .schedule-tab {
       display: flex;
       align-items: center;
@@ -210,7 +219,6 @@
       transition: color 0.2s;
       letter-spacing: -0.01em;
     }
-
     .schedule-tab::after {
       content: '';
       position: absolute;
@@ -220,47 +228,57 @@
       transform: scaleX(0);
       transition: transform 0.25s ease;
     }
-
     .schedule-tab.security-tab::after { background: var(--blue); }
-
     .schedule-tab.active { color: #fff; }
     .schedule-tab.active::after { transform: scaleX(1); }
-
-    .schedule-tab-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--teal);
-      flex-shrink: 0;
-    }
+    .schedule-tab-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
     .schedule-tab.security-tab .schedule-tab-dot { background: var(--blue); }
-
     .schedule-panel { display: none; }
     .schedule-panel.active { display: block; }
 
-    /* ── SCHEDULE TABLE ── */
+    /* ── ИЗМЕНЕНИЕ 2: увеличено расписание визуально ── */
     .schedule-table { display: flex; flex-direction: column; margin-top: 8px; }
-    .schedule-row { display: grid; grid-template-columns: 160px 1fr; gap: 32px; padding: 22px 0; border-bottom: 1px solid var(--border); align-items: start; opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .schedule-row { display: grid; grid-template-columns: 180px 1fr; gap: 40px; padding: 28px 16px; border-bottom: 1px solid var(--border); align-items: start; opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; border-radius: 12px; }
     .schedule-row:last-child { border-bottom: none; }
     .schedule-row.in { opacity: 1; transform: translateY(0); }
-    .schedule-row:hover { background: rgba(255,255,255,0.025); border-radius: 10px; }
-    .schedule-time { font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 700; color: #fff; padding-top: 4px; }
-    .schedule-event-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-    .schedule-event-title.dimmed { color: var(--text-muted); font-weight: 600; font-size: 14px; }
-    .schedule-speaker-chip { display: inline-flex; align-items: center; gap: 10px; }
-    .chip-avatar { width: 30px; height: 30px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, var(--teal-dark), var(--teal)); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .schedule-row:hover { background: rgba(255,255,255,0.03); }
+    .schedule-row.tba-row { opacity: 0.55; }
+    .schedule-row.tba-row.in { opacity: 0.55; }
+    .schedule-row.tba-row:hover { opacity: 0.8; }
+    .schedule-time { font-family: 'Unbounded', sans-serif; font-size: 14px; font-weight: 700; color: #fff; padding-top: 6px; }
+    .schedule-event-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .schedule-event-title.dimmed { color: var(--text-muted); font-weight: 600; font-size: 15px; }
+    .schedule-event-title.tba { color: var(--text-muted); font-style: italic; font-weight: 500; }
+    .schedule-speaker-chip { display: inline-flex; align-items: center; gap: 12px; }
+    .chip-avatar { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, var(--teal-dark), var(--teal)); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0; }
     .chip-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .chip-avatar.sec { background: linear-gradient(135deg, var(--blue-dark), var(--blue)); }
-    .chip-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .chip-avatar.tba-chip { background: rgba(59,130,246,0.1); border: 1px dashed rgba(59,130,246,0.3); color: rgba(59,130,246,0.5); }
+    .chip-name { font-size: 14px; font-weight: 700; color: #fff; }
+    .chip-name.tba { color: var(--text-muted); font-style: italic; font-weight: 500; }
     .chip-role { font-size: 12px; color: var(--text-muted); }
 
-    /* ── PARTNERS ── */
+    .speaker-list { display: flex; flex-direction: column; margin: 8px 0; }
+    .speaker-row { display: grid; grid-template-columns: 64px 1fr; gap: 20px; align-items: center; padding: 20px 16px; border-bottom: 1px solid var(--border); transition: background 0.2s; border-radius: 12px; }
+    .speaker-row:last-child { border-bottom: none; }
+    .speaker-row:hover { background: rgba(255,255,255,0.03); }
+    .speaker-row.tba-row-sp { opacity: 0.5; }
+    .speaker-row.tba-row-sp:hover { opacity: 0.75; }
+    .speaker-row-avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, var(--teal-dark), var(--teal)); display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .speaker-row-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .speaker-row-avatar.sec-av { background: linear-gradient(135deg, var(--blue-dark), var(--blue)); }
+    .speaker-row-avatar.tba-av { background: rgba(59,130,246,0.08); border: 2px dashed rgba(59,130,246,0.25); color: rgba(59,130,246,0.5); font-size: 18px; }
+    .speaker-row-info { display: flex; flex-direction: column; gap: 4px; }
+    .speaker-row-name { font-size: 17px; font-weight: 700; color: #fff; }
+    .speaker-row-name.tba-name { color: var(--text-muted); font-style: italic; font-weight: 500; }
+    .speaker-row-role { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+
     .partners-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin: 40px 0 16px; }
     .partners-grid { display: flex; flex-wrap: wrap; gap: 10px; }
     .partner-pill { display: inline-flex; align-items: center; justify-content: center; padding: 36px 64px; border: 1px solid var(--border); border-radius: 20px; background: var(--bg-card); min-width: 240px; transition: border-color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s; }
     .partner-pill:hover { border-color: var(--border-bright); background: var(--bg-card-hover); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
     .partner-pill img { max-height: 80px; max-width: 240px; width: auto; height: auto; opacity: 0.95; }
 
-    /* ── REGISTRATION ── */
     .reg-grid { display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: start; }
     .reg-info { position: sticky; top: 100px; }
     .reg-info p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
@@ -270,12 +288,10 @@
     .reg-form-header { background: linear-gradient(135deg, var(--teal-dark), var(--teal)); color: #fff; padding: 20px 28px; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 14px; }
     .google-form-embed { width: 100%; min-height: 820px; border: none; display: block; }
 
-    /* ── MAP ── */
     .map-address { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; }
     .map-wrapper { border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
     .map-wrapper iframe { display: block; width: 100%; height: 400px; border: none; filter: grayscale(80%) invert(92%) hue-rotate(175deg) brightness(0.75) contrast(0.9); }
 
-    /* ── FOOTER ── */
     footer { background: #0f0f0f; border-top: 1px solid var(--border); padding: 56px 48px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
     .footer-logo { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 20px; color: #fff; }
     .footer-logo strong { font-weight: 800; }
@@ -284,7 +300,6 @@
     .social-links a:hover { color: #fff; border-color: rgba(255,255,255,0.2); }
     .footer-copy { font-size: 12px; color: var(--text-dim); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -292,8 +307,6 @@
       .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
       .bento-card.featured { grid-row: span 1; min-height: 260px; }
       .tracks-grid { grid-template-columns: 1fr; }
-      .speaker-row { grid-template-columns: 1fr; gap: 16px; }
-      .speaker-topic { padding-left: 0; border-left: none; padding-top: 12px; border-top: 1px solid var(--border); }
       .schedule-row { grid-template-columns: 110px 1fr; gap: 16px; }
       .schedule-tab { padding: 14px 20px; font-size: 14px; }
       .reg-grid { grid-template-columns: 1fr; }
@@ -327,16 +340,10 @@
         <div class="line"><span class="reveal-word" data-word="находи"></span><span class="reveal-word" data-word="единомышленников"></span></div>
         <div class="line"><span class="reveal-word" data-word="и"></span><span class="reveal-word" data-word="заряжайся"></span><span class="reveal-word" data-word="знаниями"></span></div>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat-item"><span class="hero-stat-value">2</span><span class="hero-stat-label">Направления</span></div>
-        <div class="hero-stat-item"><span class="hero-stat-value">10+</span><span class="hero-stat-label">Экспертов</span></div>
-        <div class="hero-stat-item"><span class="hero-stat-value">1 день</span><span class="hero-stat-label">Только офлайн</span></div>
-        <div class="hero-stat-item"><span class="hero-stat-value">бесплатно</span><span class="hero-stat-label">Участие</span></div>
-      </div>
       <div class="hero-meta">
         <div class="hero-badge">Freedom Holding Corp. × SDU University</div>
         <div class="hero-badge">28 марта</div>
-        <div class="hero-badge">📍 SDU University, Каскелен</div>
+        <div class="hero-badge">SDU University, Каскелен</div>
       </div>
       <div class="hero-cta">
         <a href="#register" class="btn-primary">Зарегистрироваться <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -371,25 +378,46 @@
       <span class="section-label">Программа</span>
       <h2 class="section-title">Что тебя ждёт</h2>
       <div class="bento-grid">
-        <div class="bento-card featured">
-          <img src="assets/img/sduyy.jpg" alt="Freedom Junior Day">
-          <div class="overlay"><h3>Практические доклады</h3><p>Узнаешь о трендах в Data Science от ведущих экспертов индустрии с реальными кейсами</p></div>
+        <div class="bento-card featured" style="background: linear-gradient(145deg, #0a1a1a 0%, #0d2626 50%, #0f3d3d 100%); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative;">
+          <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,0.18) 0%,transparent 70%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+          <div style="position:relative;z-index:1;">
+            <div style="width:52px;height:52px;background:rgba(13,148,136,0.15);border:1px solid rgba(13,148,136,0.35);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--teal-light)" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div style="font-family:'Unbounded',sans-serif;font-size:clamp(20px,2.2vw,32px);font-weight:800;color:#fff;line-height:1.2;letter-spacing:-0.02em;margin-bottom:14px;">Один день —<br>новый уровень</div>
+            <p style="font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;max-width:340px;">Живые доклады от практиков, реальные кейсы из Freedom Holding и SDU — без воды, только то, что работает в боевых условиях.</p>
+          </div>
+          <div style="display:flex;gap:32px;margin-top:32px;position:relative;z-index:1;flex-wrap:wrap;">
+            <div>
+              <div style="font-family:'Unbounded',sans-serif;font-size:26px;font-weight:800;color:#fff;line-height:1;">10+</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.45);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-top:5px;">Экспертов</div>
+            </div>
+            <div>
+              <div style="font-family:'Unbounded',sans-serif;font-size:26px;font-weight:800;color:#fff;line-height:1;">2</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.45);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-top:5px;">Трека</div>
+            </div>
+            <div>
+              <div style="font-family:'Unbounded',sans-serif;font-size:26px;font-weight:800;color:#fff;line-height:1;">0 ₸</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.45);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-top:5px;">Вход свободный</div>
+            </div>
+          </div>
         </div>
         <div class="bento-card">
           <div class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
-          <h3>Нетворкинг</h3><p>Пообщаешься со студентами и специалистами из ведущих компаний Казахстана</p>
+          <h3>Нетворкинг</h3><p>Возможность напрямую задать вопрос специалистам из Freedom</p>
         </div>
         <div class="bento-card accent">
-          <div class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-          <h3>Freedom Junior Day — для тебя</h3><p>Хочешь начать карьеру в data? Узнай, какие навыки востребованы и как их развить уже сейчас</p>
+          <div class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Точка входа в индустрию</h3><p>Твой шанс заглянуть за кулисы реальных проектов, задать вопросы экспертам и понять, в каком направлении двигаться дальше.</p>
         </div>
         <div class="bento-card">
           <div class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <h3>Воркшопы</h3><p>Разберёшь реальные задачи анализа данных и машинного обучения на практике вместе с экспертами</p>
+          <h3>Воркшопы</h3><p>Разберёшь реальные задачи на практике вместе с экспертами</p>
         </div>
         <div class="bento-card">
-          <div class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <h3>Карьера в data</h3><p>Узнаешь, как построить карьеру в аналитике данных и что ждут работодатели от junior-специалистов</p>
+          <div class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <h3>Вектор развития</h3><p>Разберемся, как ориентироваться в мире технологий, когда всё меняется каждый день, и на что делать ставку именно тебе.</p>
         </div>
       </div>
     </div>
@@ -404,11 +432,73 @@
           <div class="track-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
           <div class="track-title">Data</div>
           <div class="track-desc">Data Engineering, Data Science и аналитика данных — практические доклады от экспертов индустрии с реальными кейсами.</div>
+          <div class="track-leaders-list">
+            <div class="track-leader-item">
+              <div class="tl-avatar"><img src="assets/img/elnura.jpg" alt="" onerror="this.style.display='none';this.parentElement.textContent='НЭ'"></div>
+              <div>
+                <div class="tl-label">Track Leader · Data Engineering</div>
+                <div class="tl-name">Набигазинова Эльнура</div>
+              </div>
+            </div>
+            <div class="track-leader-item">
+              <div class="tl-avatar"><img src="assets/img/bakhtiyor.jpeg" alt="" onerror="this.style.display='none';this.parentElement.textContent='МБ'"></div>
+              <div>
+                <div class="tl-label">Track Leader · Data Science</div>
+                <div class="tl-name">Мералиев Бахтиёр</div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="track-card security">
           <div class="track-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div class="track-title">Security</div>
           <div class="track-desc">Кибербезопасность, защита данных и практика работы в сфере информационной безопасности от специалистов Freedom и SDU.</div>
+          <div class="track-leaders-list">
+            <div class="tl-sublabel">Freedom Holding</div>
+            <div class="track-leader-item">
+              <div class="tl-avatar sec"><img src="assets/img/rassul.jpeg" alt="" onerror="this.style.display='none';this.parentElement.textContent='РА'"></div>
+              <div>
+                <div class="tl-label">Track Leader</div>
+                <div class="tl-name">Рассул Айтбаев</div>
+              </div>
+            </div>
+            <div class="track-leader-item">
+              <div class="tl-avatar sec"><img src="assets/img/akhat.jpeg" alt="" onerror="this.style.display='none';this.parentElement.textContent='АТ'"></div>
+              <div>
+                <div class="tl-label">Track Leader</div>
+                <div class="tl-name">Ахат Тукенов</div>
+              </div>
+            </div>
+            <div class="track-leader-item">
+              <div class="tl-avatar sec"><img src="assets/img/nikita.jpg" alt="" onerror="this.style.display='none';this.parentElement.textContent='НА'"></div>
+              <div>
+                <div class="tl-label">Track Leader</div>
+                <div class="tl-name">Никита Арсланов</div>
+              </div>
+            </div>
+            <div class="tl-sublabel" style="margin-top:10px;">SDU University</div>
+            <div class="track-leader-item">
+              <div class="tl-avatar sec"><img src="assets/img/shakhnazar.jpeg" alt="" onerror="this.style.display='none';this.parentElement.textContent='ШМ'"></div>
+              <div>
+                <div class="tl-label">Track Leader</div>
+                <div class="tl-name">Шахназар-Султан Манбай</div>
+              </div>
+            </div>
+            <div class="track-leader-item">
+              <div class="tl-avatar sec"><img src="assets/img/rauan.jpg" alt="" onerror="this.style.display='none';this.parentElement.textContent='РИ'"></div>
+              <div>
+                <div class="tl-label">Track Leader</div>
+                <div class="tl-name">Рауан Иссатай</div>
+              </div>
+            </div>
+            <div class="track-leader-item">
+              <div class="tl-avatar sec"><img src="assets/img/amirkhan.jpeg" alt="" onerror="this.style.display='none';this.parentElement.textContent='АО'"></div>
+              <div>
+                <div class="tl-label">Track Leader</div>
+                <div class="tl-name">Амирхан Оразбай</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -423,49 +513,34 @@
         <span class="speaker-track-badge">Data</span>
         <span class="speaker-track-title">Трек по данным</span>
       </div>
-      <div class="track-leaders">
-        <div class="track-leader-bar"><div class="track-leader-avatar">НЭ</div><div><div class="track-leader-label">Track Leader · Data Engineering</div><div class="track-leader-name">Набигазинова Эльнура</div></div></div>
-        <div class="track-leader-bar"><div class="track-leader-avatar">МБ</div><div><div class="track-leader-label">Track Leader · Data Science</div><div class="track-leader-name">Мералиев Бахтиёр</div></div></div>
-      </div>
-      <div class="speakers-list">
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar"><img src="assets/img/zhanat_romanova.png" alt=""></div><div><div class="speaker-name">Романова Жанат</div><div class="speaker-role">Директор Департамента<br>Анализа данных</div></div></div><div class="speaker-topic"><h4>Как данные меняют бизнес-решения</h4><p>Разберём, как аналитика данных влияет на стратегические решения в крупных компаниях.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar">РС</div><div><div class="speaker-name">Рахметова Сабина</div><div class="speaker-role">Эксперт</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar"><img src="assets/img/timur_suleev.jpg" alt=""></div><div><div class="speaker-name">Сулеев Тимур</div><div class="speaker-role">Руководитель Отдела Аналитики</div></div></div><div class="speaker-topic"><h4>От данных к инсайтам: рабочий процесс аналитика</h4><p>Покажу на реальных примерах, как выглядит работа аналитика изнутри.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar"><img src="assets/img/oraz.jpg" alt=""></div><div><div class="speaker-name">Садвакасов Оразгали</div><div class="speaker-role">Руководитель практики</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar"><img src="assets/img/Alan.jpg" alt=""></div><div><div class="speaker-name">Амиргалин Алан</div><div class="speaker-role">Senior Data Engineer</div></div></div><div class="speaker-topic"><h4>Data Engineering: строим надёжные пайплайны</h4><p>Разберём архитектуру современных data pipelines и стек технологий.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar">СБ</div><div><div class="speaker-name">Сарсембаев Бахытжан</div><div class="speaker-role">Эксперт</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar"><img src="assets/img/dilnaz.jpg" alt=""></div><div><div class="speaker-name">Сулейменова Дильназ</div><div class="speaker-role">Эксперт</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
+      <div class="speaker-list">
+        <div class="speaker-row"><div class="speaker-row-avatar"><img src="assets/img/zhanat_romanova.png" alt="" onerror="this.style.display='none';this.parentElement.textContent='РЖ'"></div><div class="speaker-row-info"><div class="speaker-row-name">Романова Жанат</div><div class="speaker-row-role">Директор Департамента Анализа данных</div></div></div>
+        <div class="speaker-row"><div class="speaker-row-avatar"><img src="assets/img/sabina.jpeg" alt="" onerror="this.style.display='none';this.parentElement.textContent='РС'"></div><div class="speaker-row-info"><div class="speaker-row-name">Рахметова Сабина</div><div class="speaker-row-role">Data Analyst</div></div></div>
+        <div class="speaker-row"><div class="speaker-row-avatar"><img src="assets/img/timur_suleev.jpg" alt="" onerror="this.style.display='none';this.parentElement.textContent='СТ'"></div><div class="speaker-row-info"><div class="speaker-row-name">Сулеев Тимур</div><div class="speaker-row-role">Руководитель Отдела Аналитики</div></div></div>
+        <div class="speaker-row"><div class="speaker-row-avatar"><img src="assets/img/oraz.jpg" alt="" onerror="this.style.display='none';this.parentElement.textContent='СО'"></div><div class="speaker-row-info"><div class="speaker-row-name">Садвакасов Оразгали</div><div class="speaker-row-role">Руководитель практики</div></div></div>
+        <div class="speaker-row"><div class="speaker-row-avatar"><img src="assets/img/Alan.jpg" alt="" onerror="this.style.display='none';this.parentElement.textContent='АА'"></div><div class="speaker-row-info"><div class="speaker-row-name">Амиргалин Алан</div><div class="speaker-row-role">Senior Data Engineer</div></div></div>
+        <div class="speaker-row"><div class="speaker-row-avatar" style="font-family:'Unbounded',sans-serif;font-size:11px;font-weight:700;">СБ</div><div class="speaker-row-info"><div class="speaker-row-name">Сарсембаев Бахытжан</div><div class="speaker-row-role">Эксперт</div></div></div>
+        <div class="speaker-row"><div class="speaker-row-avatar"><img src="assets/img/dilnaz.jpg" alt="" onerror="this.style.display='none';this.parentElement.textContent='СД'"></div><div class="speaker-row-info"><div class="speaker-row-name">Сулейменова Дильназ</div><div class="speaker-row-role">Эксперт</div></div></div>
       </div>
 
       <div class="speaker-track-header security" style="margin-top:48px;">
         <span class="speaker-track-badge security">Security</span>
         <span class="speaker-track-title">Трек по кибербезопасности</span>
       </div>
-      <div class="track-leaders">
-        <div class="track-leader-bar security-bar"><div class="track-leader-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));">РА</div><div><div class="track-leader-label">Track Leader · Cyber Security</div><div class="track-leader-name">Rassul Aitbayev</div><div class="track-leader-role">Freedom Holding — Head</div></div></div>
-      </div>
-      <div class="track-sublabel">Freedom Holding</div>
-      <div class="speakers-list">
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));">РА</div><div><div class="speaker-name">Rassul Aitbayev</div><div class="speaker-role">Cyber Security — Head</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));">АТ</div><div><div class="speaker-name">Akhat Tukenov</div><div class="speaker-role">Teacher · Cyber Security</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));">НА</div><div><div class="speaker-name">Nikita Arslanov</div><div class="speaker-role">Teacher · Cyber Security</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
-      </div>
-      <div class="track-sublabel">SDU University</div>
-      <div class="speakers-list">
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));">ШМ</div><div><div class="speaker-name">Shakhnazar-Sultan Manbay</div><div class="speaker-role">Teacher & Head · SDU Security</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));">РИ</div><div><div class="speaker-name">Rauan Issatay</div><div class="speaker-role">Teacher · SDU Security</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
-        <div class="speaker-row"><div class="speaker-info"><div class="speaker-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));">АО</div><div><div class="speaker-name">Amirkhan Orazbay</div><div class="speaker-role">Teacher · SDU Security</div></div></div><div class="speaker-topic"><h4>Тема будет опубликована позже</h4><p>Следи за обновлениями — тема и описание доклада появятся в ближайшее время.</p></div></div>
+      <div class="speaker-list">
+        <div class="speaker-row"><div class="speaker-row-avatar sec-av"><img src="assets/img/rassul.jpeg" alt="" onerror="this.style.display='none';this.parentElement.textContent='АР'"></div><div class="speaker-row-info"><div class="speaker-row-name">Рассул Айтбаев</div><div class="speaker-row-role">Cyber Security</div></div></div>
+        <div class="speaker-row tba-row-sp"><div class="speaker-row-avatar tba-av">?</div><div class="speaker-row-info"><div class="speaker-row-name tba-name">Скоро объявим</div><div class="speaker-row-role"><span class="tba-badge">⏳ Скоро</span></div></div></div>
+        <div class="speaker-row tba-row-sp"><div class="speaker-row-avatar tba-av">?</div><div class="speaker-row-info"><div class="speaker-row-name tba-name">Скоро объявим</div><div class="speaker-row-role"><span class="tba-badge">⏳ Скоро</span></div></div></div>
+        <div class="speaker-row tba-row-sp"><div class="speaker-row-avatar tba-av">?</div><div class="speaker-row-info"><div class="speaker-row-name tba-name">Скоро объявим</div><div class="speaker-row-role"><span class="tba-badge">⏳ Скоро</span></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- SCHEDULE -->
   <section class="section" id="schedule">
     <div class="container">
       <span class="section-label">Программа дня</span>
       <h2 class="section-title">Расписание</h2>
 
-      <!-- TABS -->
       <div class="schedule-tabs">
         <button class="schedule-tab active" data-tab="data">
           <span class="schedule-tab-dot"></span>
@@ -477,65 +552,63 @@
         </button>
       </div>
 
-      <!-- DATA PANEL -->
       <div class="schedule-panel active" id="tab-data">
         <div class="schedule-table">
           <div class="schedule-row"><div class="schedule-time">09:30 – 10:00</div><div><div class="schedule-event-title dimmed">Регистрация</div></div></div>
           <div class="schedule-row"><div class="schedule-time">10:00 – 10:30</div><div><div class="schedule-event-title dimmed">Открытие</div></div></div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">10:30 – 10:55</div>
             <div>
-              <div class="schedule-event-title">Лекция 1</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar"><img src="assets/img/zhanat_romanova.png" alt=""></div><div><div class="chip-name">Романова Жанат</div><div class="chip-role">Директор Департамента Анализа данных</div></div></div>
+              <div class="schedule-event-title tba">Лекция 1 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">10:55 – 11:20</div>
             <div>
-              <div class="schedule-event-title">Лекция 2</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar"><img src="assets/img/timur_suleev.jpg" alt=""></div><div><div class="chip-name">Сулеев Тимур</div><div class="chip-role">Руководитель Отдела Аналитики</div></div></div>
+              <div class="schedule-event-title tba">Лекция 2 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">11:20 – 11:45</div>
             <div>
-              <div class="schedule-event-title">Лекция 3</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar"><img src="assets/img/anel.jpg" alt=""></div><div><div class="chip-name">Тажинова Анель</div><div class="chip-role">Директор Департамента Цифровизации</div></div></div>
+              <div class="schedule-event-title tba">Лекция 3 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
           <div class="schedule-row"><div class="schedule-time">11:45 – 12:30</div><div><div class="schedule-event-title dimmed">Кофебрейк — нетворкинг</div></div></div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">12:30 – 12:55</div>
             <div>
-              <div class="schedule-event-title">Лекция 4</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar"><img src="assets/img/oraz.jpg" alt=""></div><div><div class="chip-name">Садвакасов Оразгали</div><div class="chip-role">Руководитель практики</div></div></div>
+              <div class="schedule-event-title tba">Лекция 4 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">12:55 – 13:20</div>
             <div>
-              <div class="schedule-event-title">Лекция 5</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar"><img src="assets/img/Alan.jpg" alt=""></div><div><div class="chip-name">Амиргалин Алан</div><div class="chip-role">Senior Data Engineer</div></div></div>
+              <div class="schedule-event-title tba">Лекция 5 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">13:20 – 13:45</div>
             <div>
-              <div class="schedule-event-title">Лекция 6</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar">СБ</div><div><div class="chip-name">Сарсембаев Бахытжан</div><div class="chip-role">Эксперт</div></div></div>
+              <div class="schedule-event-title tba">Лекция 6 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">13:45 – 14:10</div>
             <div>
-              <div class="schedule-event-title">Лекция 7</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar"><img src="assets/img/dilnaz.jpg" alt=""></div><div><div class="chip-name">Сулейменова Дильназ</div><div class="chip-role">Эксперт</div></div></div>
+              <div class="schedule-event-title tba">Лекция 7 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- SECURITY PANEL -->
       <div class="schedule-panel" id="tab-security">
         <div class="schedule-table">
           <div class="schedule-row"><div class="schedule-time">09:30 – 10:00</div><div><div class="schedule-event-title dimmed">Регистрация</div></div></div>
@@ -544,48 +617,33 @@
             <div class="schedule-time">10:30 – 10:55</div>
             <div>
               <div class="schedule-event-title">Лекция 1</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar sec">РА</div><div><div class="chip-name">Rassul Aitbayev</div><div class="chip-role">Cyber Security — Head</div></div></div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar sec"><img src="assets/img/rassul.jpeg" alt=""></div><div><div class="chip-name">Рассул Айтбаев</div></div></div>
             </div>
           </div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">10:55 – 11:20</div>
             <div>
-              <div class="schedule-event-title">Лекция 2</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar sec">АТ</div><div><div class="chip-name">Akhat Tukenov</div><div class="chip-role">Teacher · Cyber Security</div></div></div>
+              <div class="schedule-event-title tba">Лекция 2 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">11:20 – 11:45</div>
             <div>
-              <div class="schedule-event-title">Лекция 3</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar sec">НА</div><div><div class="chip-name">Nikita Arslanov</div><div class="chip-role">Teacher · Cyber Security</div></div></div>
+              <div class="schedule-event-title tba">Лекция 3 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
           <div class="schedule-row"><div class="schedule-time">11:45 – 12:30</div><div><div class="schedule-event-title dimmed">Кофебрейк — нетворкинг</div></div></div>
-          <div class="schedule-row">
+          <div class="schedule-row tba-row">
             <div class="schedule-time">12:30 – 12:55</div>
             <div>
-              <div class="schedule-event-title">Лекция 4</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar sec">ШМ</div><div><div class="chip-name">Shakhnazar-Sultan Manbay</div><div class="chip-role">Teacher & Head · SDU Security</div></div></div>
-            </div>
-          </div>
-          <div class="schedule-row">
-            <div class="schedule-time">12:55 – 13:20</div>
-            <div>
-              <div class="schedule-event-title">Лекция 5</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar sec">РИ</div><div><div class="chip-name">Rauan Issatay</div><div class="chip-role">Teacher · SDU Security</div></div></div>
-            </div>
-          </div>
-          <div class="schedule-row">
-            <div class="schedule-time">13:20 – 13:45</div>
-            <div>
-              <div class="schedule-event-title">Лекция 6</div>
-              <div class="schedule-speaker-chip"><div class="chip-avatar sec">АО</div><div><div class="chip-name">Amirkhan Orazbay</div><div class="chip-role">Teacher · SDU Security</div></div></div>
+              <div class="schedule-event-title tba">Лекция 4 — скоро объявим</div>
+              <div class="schedule-speaker-chip"><div class="chip-avatar tba-chip">?</div><div><div class="chip-name tba">Спикер уточняется</div></div></div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -646,36 +704,25 @@
   </footer>
 
   <script>
-    // Nav scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', function() {
       navbar.classList.toggle('scrolled', window.scrollY > 40);
     });
 
-    // Section reveal
     const sectionObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.section').forEach(function(s) { sectionObserver.observe(s); });
 
-    // ── Schedule tabs ──
     document.querySelectorAll('.schedule-tab').forEach(function(tab) {
       tab.addEventListener('click', function() {
         const target = this.getAttribute('data-tab');
-
-        // Switch tabs
         document.querySelectorAll('.schedule-tab').forEach(function(t) { t.classList.remove('active'); });
         this.classList.add('active');
-
-        // Switch panels
         document.querySelectorAll('.schedule-panel').forEach(function(p) { p.classList.remove('active'); });
         const panel = document.getElementById('tab-' + target);
         panel.classList.add('active');
-
-        // Animate rows in new panel
-        panel.querySelectorAll('.schedule-row').forEach(function(row) {
-          row.classList.remove('in');
-        });
+        panel.querySelectorAll('.schedule-row').forEach(function(row) { row.classList.remove('in'); });
         setTimeout(function() {
           panel.querySelectorAll('.schedule-row').forEach(function(row, i) {
             setTimeout(function() { row.classList.add('in'); }, i * 55);
@@ -684,19 +731,6 @@
       });
     });
 
-    // Stagger: speaker rows
-    const speakerObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.querySelectorAll('.speaker-row').forEach(function(row, i) {
-          setTimeout(function() { row.classList.add('in'); }, i * 80);
-        });
-        speakerObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.05 });
-    document.querySelectorAll('.speakers-list').forEach(function(l) { speakerObserver.observe(l); });
-
-    // Stagger: schedule rows (initial load - data tab)
     const scheduleObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (!entry.isIntersecting) return;
@@ -706,9 +740,8 @@
         scheduleObserver.unobserve(entry.target);
       });
     }, { threshold: 0.05 });
-    document.querySelectorAll('.schedule-table') && document.querySelectorAll('#schedule').forEach(function(t) { scheduleObserver.observe(t); });
+    document.querySelectorAll('#schedule').forEach(function(t) { scheduleObserver.observe(t); });
 
-    // Stagger: bento cards
     const bentoObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (!entry.isIntersecting) return;
@@ -723,7 +756,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.bento-grid').forEach(function(g) { bentoObserver.observe(g); });
 
-    // Stagger: track cards
     const tracksObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (!entry.isIntersecting) return;
@@ -739,7 +771,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.tracks-grid').forEach(function(g) { tracksObserver.observe(g); });
 
-    // Letter reveal
     document.querySelectorAll('.reveal-word').forEach(function(el) {
       const word = el.getAttribute('data-word');
       el.innerHTML = word.split('').map(function(ch) { return '<span class="reveal-letter">' + ch + '</span>'; }).join('');
